@@ -47,6 +47,12 @@ public:
 
     void setMask(const cv::Mat &im, const std::vector<cv::Point2f> &vpts,  const int dist, cv::Mat &mask) const;
 
+    //nmaxpts_ = 308
+    //nmaxdist_ = 35 
+    //nmindist_ = nmaxdist / 2.; = 17
+    //dmaxquality_ = 0.001
+    //dminquality_ = 0.0005
+    //nfast_th_ = 10
     size_t nmaxpts_, nmaxdist_, nmindist_;
     double dmaxquality_, dminquality_;
     int nfast_th_;

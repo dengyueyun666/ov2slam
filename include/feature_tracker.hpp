@@ -50,7 +50,7 @@ public:
     bool inBorder(const cv::Point2f &pt, const cv::Mat &im) const;
 
     // KLT optim. parameter
-    cv::TermCriteria klt_convg_crit_;
+    cv::TermCriteria klt_convg_crit_; //30 iters. + 0.01 prec.
 
     cv::Ptr<cv::CLAHE> pclahe_;
 };

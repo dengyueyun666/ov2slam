@@ -222,6 +222,7 @@ public:
     std::shared_ptr<CameraCalibration> pcalib_leftcam_;
     std::shared_ptr<CameraCalibration> pcalib_rightcam_;
 
+    //从左相机到右相机变换的基础矩阵F
     Eigen::Matrix3d Frl_;
     cv::Mat Fcv_;
 

@@ -1149,7 +1149,7 @@ void VisualFrontEnd::preprocessImage(cv::Mat &img_raw)
     // left_raw_img_ = img_raw;
 
     // Update prev img
-    if( !pslamstate_->btrack_keyframetoframe_ ) {
+    if( !pslamstate_->btrack_keyframetoframe_ ) { //btrack_keyframetoframe_ = 0
         // cur_img_.copyTo(prev_img_);
         cv::swap(cur_img_, prev_img_);
     }
@@ -1169,6 +1169,8 @@ void VisualFrontEnd::preprocessImage(cv::Mat &img_raw)
             prev_pyr_.swap(cur_pyr_);
         }
 
+        //klt_win_size_ = 9
+        //nklt_pyr_lvl_ = 3
         cv::buildOpticalFlowPyramid(cur_img_, cur_pyr_, pslamstate_->klt_win_size_, pslamstate_->nklt_pyr_lvl_);
     }
 

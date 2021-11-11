@@ -86,14 +86,21 @@ SlamManager::SlamManager(std::shared_ptr<SlamParams> pstate, std::shared_ptr<Ros
     cv::Size clahe_tiles(pcalib_model_left_->img_w_ / tilesize
                         , pcalib_model_left_->img_h_ / tilesize);
                         
+    // fclahe_val_ = 3
     cv::Ptr<cv::CLAHE> pclahe = cv::createCLAHE(pslamstate_->fclahe_val_, clahe_tiles);
 
+    //nbmaxkps_ = nbwcells * nbhcells 表示最大的关键点数量
+    //nmaxdist_ = 35 (Min dist between kps)
+    //dmaxquality_ = 0.001 # used for gftt or singlescale
+    //nfast_th_ = 10
     pfeatextract_.reset( new FeatureExtractor(
                                 pslamstate_->nbmaxkps_, pslamstate_->nmaxdist_, 
                                 pslamstate_->dmaxquality_, pslamstate_->nfast_th_
                             ) 
                         );
 
+    //nmax_iter_ = 30
+    //fmax_px_precision_ = 0.01
     ptracker_.reset( new FeatureTracker(pslamstate_->nmax_iter_, 
                             pslamstate_->fmax_px_precision_, pclahe
                         )
